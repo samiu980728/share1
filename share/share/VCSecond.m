@@ -9,9 +9,9 @@
 #import "VCSecond.h"
 #import "JPXForSecondTableViewCell.h"
 #import "FUForSecond.h"
-
+#import "DabaiViewController.h"
 #import "PictureUpLoadViewController.h"
-@interface VCSecond ()<UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating>
+@interface VCSecond ()<UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating,UITextFieldDelegate>
 
 
 @property (nonatomic,strong) UISearchController *searchController;
@@ -44,17 +44,30 @@
     // 创建UISearchController
     
     
-    _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+//    _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+//
+//    _searchController.searchResultsUpdater = self;
+//
+//    _searchController.dimsBackgroundDuringPresentation =NO;
+//
+//    _searchController.hidesNavigationBarDuringPresentation =NO;
+//
+//    _searchController.searchBar.frame =CGRectMake(self.searchController.searchBar.frame.origin.x,self.searchController.searchBar.frame.origin.y,self.searchController.searchBar.frame.size.width, 44.0);
     
-    _searchController.searchResultsUpdater =self;
-    
-    _searchController.dimsBackgroundDuringPresentation =NO;
-    
-    _searchController.hidesNavigationBarDuringPresentation =NO;
-    
-    _searchController.searchBar.frame =CGRectMake(self.searchController.searchBar.frame.origin.x,self.searchController.searchBar.frame.origin.y,self.searchController.searchBar.frame.size.width, 44.0);
-    
-    self.tableView.tableHeaderView =self.searchController.searchBar;
+    UITextField * text = [[UITextField alloc] init];
+    text.delegate = self;
+    text.borderStyle = UITextBorderStyleRoundedRect;
+    text.backgroundColor = [UIColor whiteColor];
+    text.clearButtonMode = UITextFieldViewModeAlways;
+    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"54,.png"]];
+    text.leftView = imageView;
+    text.leftViewMode = UITextFieldViewModeAlways;
+    text.frame = CGRectMake(5, 5, [UIScreen mainScreen].bounds.size.width-10, 30);
+    //self.tableView.tableHeaderView = text;
+    [text addTarget:self action:@selector(dabai:) forControlEvents:UIControlEventEditingDidEnd];
+    [self.view addSubview:text];
+    //self.tableView.tableHeaderView = text;
+    //self.tableView.tableHeaderView =self.searchController.searchBar;
     
     //处理最后一个单元格被分栏控制器遮盖
     
@@ -71,7 +84,10 @@
     
     array4 = [NSArray arrayWithObjects:@" ",@"插画/手绘",@"其他",@" ",@"编辑精选",@" ",@"1年前",@" ",@" ",@" ", nil];
     
-    array5 = [NSArray arrayWithObjects:@"分类",@" ",@" ",@"推荐",@" ",@"时间",@" ", nil];
+    //array5 = [NSArray arrayWithObjects:@"分类",@" ",@" ",@"推荐",@" ",@"时间",@" ", nil];
+    array5 = [NSArray arrayWithObjects:@"fen_lei.png",@" ",@" ",@"tui_jian.png",@" ",@"shi_jian.png",@" ", nil];
+    
+    array6 = [NSArray arrayWithObjects:@"home_line.png",@" ",@" ",@"home_line.png",@" ",@"home_line.png",@" ", nil];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -80,7 +96,31 @@
     
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    return [textField resignFirstResponder];
+}
+
+- (void)dabai:(UITextField *)tf
+{
+    NSString * str = tf.text;
+    NSString * str1 = @"Dabai";
+    if ( [str1 isEqualToString:str] ){
+        DabaiViewController * a = [DabaiViewController new];
+        [self.navigationController pushViewController:a animated:YES];
+    }
+}
+
 // self.searchController.active 当前的状态
+
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//{
+//    [self.view endEditing:YES];
+//}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -115,24 +155,43 @@
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
         if ( cell == nil ){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+//            _imageView1.frame = CGRectMake(0, 7, 75, 23);
+//            _imageLine.frame = CGRectMake(0, 29, 400, 2);
             
-            UIButton * btn = [[UIButton alloc] init];
-            [btn addTarget:self action:@selector(pressButton1:) forControlEvents:UIControlEventTouchUpInside];
+            UIImageView * _imageView1 = [[UIImageView alloc] init];
+            UIImageView * _imageLine = [[UIImageView alloc] init];
             
-            [btn setBackgroundImage:[UIImage imageNamed:@"2.png"] forState:UIControlStateSelected];
+            _imageView1.frame = CGRectMake(0, 7, 75, 23);
+            _imageLine.frame = CGRectMake(0, 29, 400, 2);
             
-            btn.frame = CGRectMake(0, 10, 100, 25);
-//            btn.imageView.frame = CGRectMake(10, 10, 20, 20);
-//            btn.imageView.image = [UIImage imageNamed:@"50,.png"];
+            _imageView1.image = [UIImage imageNamed:[array5 objectAtIndex:indexPath.row]];
             
-//            btn.titleLabel.frame = CGRectMake(30, 10, 100, 20);
-//            btn.titleLabel.font = [UIFont systemFontOfSize:20];
-//            btn.titleLabel.text = [array5 objectAtIndex:indexPath.row];
-            [btn setTitle:[array5 objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-            [btn setImage:[UIImage imageNamed:@"50,.png"] forState:UIControlStateNormal];
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            _imageLine.image = [UIImage imageNamed:[array6 objectAtIndex:indexPath.row]];
             
-            [cell.contentView addSubview:btn];
+            [cell.contentView addSubview:_imageLine];
+            [cell.contentView addSubview:_imageView1];
+            
+//            UIButton * btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//            [btn addTarget:self action:@selector(pressButton1:) forControlEvents:UIControlEventTouchUpInside];
+//
+//           // [btn setBackgroundImage:[UIImage imageNamed:@"2.png"] forState:UIControlStateSelected];
+//            btn.layer.cornerRadius = 4;
+//            btn.tintColor = [UIColor colorWithRed:0.12 green:0.50 blue:0.81 alpha:1.00];
+//            btn.backgroundColor = [UIColor whiteColor];
+//
+//            btn.frame = CGRectMake(0, 4, 100, 32);
+//            btn.titleLabel.font = [UIFont systemFontOfSize:17];
+////            btn.imageView.frame = CGRectMake(10, 10, 20, 20);
+////            btn.imageView.image = [UIImage imageNamed:@"50,.png"];
+//
+////            btn.titleLabel.frame = CGRectMake(30, 10, 100, 20);
+////            btn.titleLabel.font = [UIFont systemFontOfSize:20];
+////            btn.titleLabel.text = [array5 objectAtIndex:indexPath.row];
+//            [btn setTitle:[array5 objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+//            [btn setImage:[UIImage imageNamed:@"50,.png"] forState:UIControlStateNormal];
+//            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//            
+//            [cell.contentView addSubview:btn];
         }
         cell.backgroundColor = [UIColor colorWithRed:0.93f green:0.93f blue:0.94f alpha:1.00f];
         return cell;
@@ -167,7 +226,14 @@
 - (void)pressButton1:(UIButton *)button
 {
     button.selected = !button.selected;
+    if (button.selected == YES) {
+        button.backgroundColor = [UIColor colorWithRed:0.12 green:0.50 blue:0.81 alpha:1.00];
+    }
+    else {
+        
+    }
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -177,14 +243,26 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"2.png"] forBarMetrics:nil];
     
-    NSString * filePath1 = [[NSBundle mainBundle]pathForResource:@"166" ofType:@"png"];
-    
+    NSString * filePath1 = [[NSBundle mainBundle]pathForResource:@"58," ofType:@"png"];
+
     NSData * data1 = [NSData dataWithContentsOfFile:filePath1];
     
     //暂时把action设置为nil 等会还要上传照片
     UIBarButtonItem * item1 = [[UIBarButtonItem alloc] initWithImage:[self reSizeImage:[UIImage imageWithData:data1] toSize:CGSizeMake(30, 30)] style:UIBarButtonItemStyleDone target:self action:@selector(clickMe:)];
-    
+
     self.navigationItem.leftBarButtonItem = item1;
+    
+//    FUForSecond * a = [FUForSecond new];
+//    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(clickMe:)];
+    
+//    a.navigationItem.leftBarButtonItem = item;
+//    a.navigationItem.backBarButtonItem = item;
+//    a.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
+//    a.view.backgroundColor = [UIColor whiteColor];
+//    self.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:a animated:YES];
+//    self.hidesBottomBarWhenPushed = NO;
+    
     
     NSString * filePath2 = [[NSBundle mainBundle] pathForResource:@"177" ofType:@"png"];
     
@@ -199,20 +277,27 @@
 
 - (void)clickMe:(id)sender
 {
-    FUForSecond * fu = [[FUForSecond alloc] init];
+//    FUForSecond * fu = [[FUForSecond alloc] init];
+//
+//    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:fu];
+//
+//    [self presentViewController:nav animated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
     
-    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:fu];
     
-    [self presentViewController:nav animated:YES completion:nil];
+//    DabaiViewController * a = [[DabaiViewController alloc] init];
+//    [self.navigationController pushViewController:a animated:YES];
 }
 
 - (void)clickMe1:(id)sender
 {
-    PictureUpLoadViewController * fu = [[PictureUpLoadViewController alloc] init];
-    
-    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:fu];
-    
-    [self presentViewController:nav animated:YES completion:nil];
+//    PictureUpLoadViewController * fu = [[PictureUpLoadViewController alloc] init];
+//
+//    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:fu];
+//
+//    [self presentViewController:nav animated:YES completion:nil];
+    PictureUpLoadViewController * a = [[PictureUpLoadViewController alloc] init];
+    [self.navigationController pushViewController:a animated:YES];
 }
 
 

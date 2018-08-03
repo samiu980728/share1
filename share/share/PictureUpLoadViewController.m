@@ -13,6 +13,7 @@
 #import "VCFourth.h"
 #import "VCFiveth.h"
 #import "LMJDropdownMenu.h"
+#import "FUForSecond.h"
 @interface PictureUpLoadViewController ()<LMJDropdownMenuDelegate>
 
 @end
@@ -23,7 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithRed:0.93f green:0.93f blue:0.94f alpha:1.00f];
-    
+    //self.view.opaque = YES;
 //    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
 //
 //    _tableView.delegate = self;
@@ -38,10 +39,26 @@
     dropdownMenu.delegate = self;
     [self.view addSubview:dropdownMenu];
     
+    
+    
+//    UIButton * imageBtn = [[UIButton alloc] init];
+//    imageBtn.frame = CGRectMake(10, 20, 240, 140);
+//    [imageBtn setImage:[UIImage imageNamed:@"20,.png"] forState:UIControlStateNormal];
+//    [self.view addSubview:imageBtn];
+//    [imageBtn addTarget:self action:@selector(clickMe22:) forControlEvents:UIControlEventTouchUpInside];
+    
     UIImageView * image = [[UIImageView alloc] init];
     image.frame = CGRectMake(10, 20, 240, 140);
     image.image = [UIImage imageNamed:@"20,.png"];
-    [self.view addSubview:image];
+    UIButton * btnCarry = [[UIButton alloc] init];
+    btnCarry.frame = CGRectMake(10, 20, 240, 140);
+    [btnCarry setImage:[UIImage imageNamed:@"20,.png"] forState:UIControlStateNormal];
+    [btnCarry addTarget:self action:@selector(clickMe22:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnCarry];
+    
+    //[self.view addSubview:image];
+    
+    
     btnArray1 = [NSArray arrayWithObjects:@" ",@"平面设计",@"虚拟设计",@" ",@" ",@" ", nil];
     
     btnArray2 = [NSArray arrayWithObjects:@" ",@"网页设计",@"影视",@" ",@" ",@" ", nil];
@@ -186,177 +203,7 @@
 
 
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UITableViewCell * cell1 = nil;
-//    UITableViewCell * cell2 = nil;
-//    UITableViewCell * cell3 = nil;
-//    UITableViewCell * cell4 = nil;
-//    UITableViewCell * cell5 = nil;
-//    cell5 = [_tableView dequeueReusableCellWithIdentifier:@"cell5"];
-//    if ( indexPath.row == 1 ){
-//        cell1 = [_tableView dequeueReusableCellWithIdentifier:@"cell1"];
-//        if ( !cell1 ){
-//            cell1 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell1"];
-//            LMJDropdownMenu * dropdownMenu = [[LMJDropdownMenu alloc] init];
-//            [dropdownMenu setFrame:CGRectMake(270, 80, 100, 40)];
-//            [dropdownMenu setMenuTitles:@[@"原创作品",@"设计资料",@"设计师观点",@"设计教程"] rowHeight:30];
-//            dropdownMenu.delegate = self;
-//            [cell1.contentView addSubview:dropdownMenu];
-//        }
-//        UIImageView * image = [[UIImageView alloc] init];
-//        image.frame = CGRectMake(10, 10, 240, 140);
-//        image.image = [UIImage imageNamed:@"20,.png"];
-//        [cell1.contentView addSubview:image];
-//
-//        UIButton * btn1 = [[UIButton alloc] init];
-//        [btn1 setTitle:@"陕西省，西安市" forState:UIControlStateNormal];
-//        btn1.frame = CGRectMake(300, 50, 100, 20);
-//        //btn1.layer.cornerRadius = 0.5;
-//        [btn1 setBackgroundImage:[UIImage imageNamed:@"2.png"] forState:UIControlStateNormal];
-//        [cell1.contentView addSubview:btn1];
-//
-//        cell1.backgroundColor = [UIColor colorWithRed:0.93f green:0.93f blue:0.94f alpha:1.00f];
-//        return cell1;
-//    }
-//    else if ( indexPath.row == 1 || indexPath.row == 2 ){
-//        cell2 = [_tableView dequeueReusableCellWithIdentifier:@"cell2"];
-//        if ( !cell2 ){
-//            cell1 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell2"];
-//            UIButton * btn2 = [[UIButton alloc] init];
-//            UIButton * btn3 = [[UIButton alloc] init];
-//            UIButton * btn4 = [[UIButton alloc] init];
-//            UIButton * btn5 = [[UIButton alloc] init];
-//
-//            btn2.frame = CGRectMake(0, 10, 100, 20);
-//            btn3.frame = CGRectMake(105, 10, 100, 20);
-//            btn4.frame = CGRectMake(210, 10, 90, 20);
-//            btn5.frame = CGRectMake(305, 10, 100, 20);
-//
-//            [btn2 setTitle:[btnArray1 objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-//            [btn3 setTitle:[btnArray2 objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-//            [btn4 setTitle:[btnArray3 objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-//            [btn5 setTitle:[btnArray4 objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-//
-//            [btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//            [btn3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//            [btn4 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//            [btn5 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//
-//            [btn2 addTarget:self action:@selector(pressButton1:) forControlEvents:UIControlEventTouchUpInside];
-//            [btn2 setBackgroundImage:[UIImage imageNamed:@"2.png"] forState:UIControlStateSelected];
-//
-//            [btn3 addTarget:self action:@selector(pressButton1:) forControlEvents:UIControlEventTouchUpInside];
-//            [btn3 setBackgroundImage:[UIImage imageNamed:@"2.png"] forState:UIControlStateSelected];
-//
-//            [btn4 addTarget:self action:@selector(pressButton1:) forControlEvents:UIControlEventTouchUpInside];
-//            [btn4 setBackgroundImage:[UIImage imageNamed:@"2.png"] forState:UIControlStateSelected];
-//
-//            [btn5 addTarget:self action:@selector(pressButton1:) forControlEvents:UIControlEventTouchUpInside];
-//            [btn5 setBackgroundImage:[UIImage imageNamed:@"2.png"] forState:UIControlStateSelected];
-//
-//            [cell2.contentView addSubview:btn2];
-//            [cell2.contentView addSubview:btn3];
-//            [cell2.contentView addSubview:btn4];
-//            [cell2.contentView addSubview:btn5];
-//
-//        }
-//        cell2.backgroundColor = [UIColor colorWithRed:0.93f green:0.93f blue:0.94f alpha:1.00f];
-//        return cell2;
-//    }
-//    else if (indexPath.row == 3 ){
-//        cell3 = [_tableView dequeueReusableCellWithIdentifier:@"cell3"];
-//        if ( !cell3 ){
-//            cell3 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell3"];
-//            UITextField * text = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width-5, 30)];
-//            text.borderStyle  = UITextBorderStyleRoundedRect;
-//            text.backgroundColor = [UIColor whiteColor];
-//            text.placeholder = @"请说出心中所想";
-//            text.font = [UIFont systemFontOfSize:15];
-//            text.textColor = [UIColor blackColor];
-//            text.clearButtonMode = UITextFieldViewModeAlways;
-//
-//            text.clearsOnBeginEditing = YES;
-//            text.textAlignment = NSTextAlignmentLeft;
-//            text.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-//            text.adjustsFontSizeToFitWidth = YES;
-//            text.minimumFontSize = 14;
-//            text.keyboardType = UIKeyboardTypeNumberPad;
-//            text.autocapitalizationType = UITextAutocapitalizationTypeNone;
-//            text.returnKeyType = UIReturnKeyYahoo;
-//            //text.delegate = self;
-//            [cell3.contentView addSubview:text];
-//
-//        }
-//
-//        cell3.backgroundColor = [UIColor colorWithRed:0.93f green:0.93f blue:0.94f alpha:1.00f];
-//        return cell3;
-//    }
-//    else if (indexPath.row == 4 ){
-//        cell4 = [_tableView dequeueReusableCellWithIdentifier:@"cell4"];
-//        if ( !cell4 ){
-//            cell4 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell4"];
-//            UITextView * textView001 = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width-5, 90)];
-//            textView001.backgroundColor = [UIColor whiteColor];
-//            textView001.textColor = [UIColor blackColor];
-//            textView001.font = [UIFont systemFontOfSize:15];
-//            textView001.textAlignment = NSTextAlignmentLeft;
-//            textView001.keyboardType = UIKeyboardTypeNumberPad;
-//            // 回车键类型
-//            textView001.returnKeyType = UIReturnKeyNext;
-//            // 回车键响应条件，有输入时才能响应，默认为NO，即没有限制
-//            textView001.enablesReturnKeyAutomatically = NO;
-//
-//            [cell4.contentView addSubview:textView001];
-//        }
-//        cell4.backgroundColor = [UIColor colorWithRed:0.93f green:0.93f blue:0.94f alpha:1.00f];
-//        return cell4;
-//    }
-//
-////        cell5 = [_tableView dequeueReusableCellWithIdentifier:@"cell5"];
-//        if ( !cell5 ){
-//            cell5 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell5"];
-//            UIButton * btn = [[UIButton alloc] init];
-//            btn.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width-5, 40);
-//            [btn setTitle:@"发布" forState:UIControlStateNormal];
-//            btn.titleLabel.font = [UIFont systemFontOfSize:20];
-//            [btn setBackgroundImage:[UIImage imageNamed:@"2.png"] forState:UIControlStateNormal];
-//            [cell5.contentView addSubview:btn];
-//        }
-//
-//        cell5.backgroundColor = [UIColor colorWithRed:0.93f green:0.93f blue:0.94f alpha:1.00f];
-//
-//        return cell5;
-//
-//    //return cell5;
-//
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if ( indexPath.row == 0 ){
-//        return 150;
-//    }
-//    else if ( indexPath.row == 1 || indexPath.row == 2 ){
-//        return 40;
-//    }
-//    else if (indexPath.row == 3 ){
-//        return 40;
-//    }
-//    else{
-//        return 100;
-//    }
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return 6;
-//}
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
+
 
 - (void)pressButton1:(UIButton *)button
 {
@@ -393,19 +240,50 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    NSString * filePath1 = [[NSBundle mainBundle]pathForResource:@"177" ofType:@"png"];
+    NSString * filePath1 = [[NSBundle mainBundle]pathForResource:@"57," ofType:@"png"];
     
     NSData * data1 = [NSData dataWithContentsOfFile:filePath1];
     
+    NSString * filePath2 = [[NSBundle mainBundle]pathForResource:@"58," ofType:@"png"];
+    
+    NSData * data2 = [NSData dataWithContentsOfFile:filePath2];
+    
     //暂时把action设置为nil 等会还要上传照片
-    UIBarButtonItem * item1 = [[UIBarButtonItem alloc] initWithImage:[self reSizeImage:[UIImage imageWithData:data1] toSize:CGSizeMake(30, 30)] style:UIBarButtonItemStyleDone target:self action:@selector(clickMe:)];
+    UIBarButtonItem * item1 = [[UIBarButtonItem alloc] initWithImage:[self reSizeImage:[UIImage imageWithData:data2] toSize:CGSizeMake(30, 30)] style:UIBarButtonItemStyleDone target:self action:@selector(clickMe11:)];
+    
+    UIBarButtonItem * item2 = [[UIBarButtonItem alloc] initWithImage:[self reSizeImage:[UIImage imageWithData:data1] toSize:CGSizeMake(30, 30)] style:UIBarButtonItemStyleDone target:self action:@selector(clickMe22:)];
     
     self.navigationItem.leftBarButtonItem = item1;
     
-    
+    self.navigationItem.rightBarButtonItem = item2;
     
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+- (void)clickMe22:(id)sender
+{
+    FUForSecond * a = [[FUForSecond alloc] init];
+    [self.navigationController pushViewController:a animated:YES];
+}
+
+- (void)clickMe11:(id)sender
+{
+//    FUForSecond * a = [[FUForSecond alloc] init];
+//    [self.navigationController pushViewController:a animated:YES];
+//    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(clickMe22:)];
+//    a.navigationItem.leftBarButtonItem = item;
+//    a.navigationItem.backBarButtonItem = item;
+//    a.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
+//    a.view.backgroundColor = [UIColor whiteColor];
+//    VCSecond * a = [[VCSecond alloc] init];
+//    [self.navigationController popToViewController:a animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 
 - (void)clickMe:(id)sender{
     VCFirst * vcFirst = [[VCFirst alloc] init];

@@ -80,7 +80,7 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"活动";
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"2.png"] forBarMetrics:nil];
-    NSString * filePath1 = [[NSBundle mainBundle]pathForResource:@"177" ofType:@"png"];
+    NSString * filePath1 = [[NSBundle mainBundle]pathForResource:@"58," ofType:@"png"];
     
     NSData * dataImage = [NSData dataWithContentsOfFile:filePath1];
     

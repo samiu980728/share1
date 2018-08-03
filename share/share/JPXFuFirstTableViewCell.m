@@ -37,24 +37,24 @@
         _btn3 = [[UIButton alloc] init];
         
         
-        [self.contentView addSubview:_image1];
-        [self.contentView addSubview:_image2];
-        [self.contentView addSubview:_image3];
-        
-        [self.contentView addSubview:_image4];
-        [self.contentView addSubview:_image5];
+//        [self.contentView addSubview:_image1];
+//        [self.contentView addSubview:_image2];
+//        [self.contentView addSubview:_image3];
+//
+//        [self.contentView addSubview:_image4];
+//        [self.contentView addSubview:_image5];
         
         [self.contentView addSubview:_imageCell1];
         
         [self.contentView addSubview:_mainString];
         [self.contentView addSubview:_detailString1];
         [self.contentView addSubview:_detailString2];
-        [self.contentView addSubview:_detailString3];
-        [self.contentView addSubview:_btn1];
-        
-        [self.contentView addSubview:_btn2];
-        [self.contentView addSubview:_btn3];
-        
+        //[self.contentView addSubview:_detailString3];
+//        [self.contentView addSubview:_btn1];
+//
+//        [self.contentView addSubview:_btn2];
+//        [self.contentView addSubview:_btn3];
+//
         
     }
     return self;
@@ -66,28 +66,30 @@
     [super layoutSubviews];
     _imageCell1.frame = CGRectMake(20, 5, 70, 70);
     
-    _mainString.frame = CGRectMake(100, 5, 200, 15);
+    _mainString.frame = CGRectMake(100, 5, 200, 20);
+    _mainString.font = [UIFont systemFontOfSize:20];
     
     _mainString.font = [UIFont systemFontOfSize:15];
     
-    _detailString1.frame = CGRectMake(100, 30, 250, 15);
+    _detailString1.frame = CGRectMake(320, 5, 250, 15);
     
     _detailString1.font = [UIFont systemFontOfSize:14];
     
-    _detailString2.frame = CGRectMake(100, 50, 250, 15);
+    _detailString2.frame = CGRectMake(100, 30, 250, 15);
     
     _detailString2.font = [UIFont systemFontOfSize:15];
     
+    //_detailString3.font = [UIFont systemFontOfSize:15];
+    
+    _detailString3.frame = CGRectMake(0, 0, 300, 25);
     _detailString3.font = [UIFont systemFontOfSize:15];
     
-    _detailString3.frame = CGRectMake(0, 0, 300, 80);
+    _image1.frame = CGRectMake(0, 30, [UIScreen mainScreen].bounds.size.width, 280);
     
-    _image1.frame = CGRectMake(0, 30, [UIScreen mainScreen].bounds.size.width, 100);
-    
-    _image2.frame = CGRectMake(0, 130, ([UIScreen mainScreen].bounds.size.width), 100);
+    _image2.frame = CGRectMake(0, 315, ([UIScreen mainScreen].bounds.size.width), 280);
     
     
-    _image3.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width)/4, 330, ([UIScreen mainScreen].bounds.size.width)/2, 200);
+    _image3.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width)/4, 600, ([UIScreen mainScreen].bounds.size.width)/2, 300);
     
     _btn1.frame = CGRectMake(150, 50, 30, 30);
     

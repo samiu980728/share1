@@ -22,7 +22,9 @@
     
 //    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
 //
-//    [self.window makeKeyAndVisible];
+    [self.window makeKeyAndVisible];
+    
+    [self createLaunchAnimation];
 //
 //    VCFirst * vcFirst = [[VCFirst alloc] init];
 //    vcFirst.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"第一" image:nil tag:101];
@@ -45,11 +47,25 @@
 //
 //
 //    self.window.rootViewController = VC;
-
+    
     
     return YES;
 }
 
+-(void)createLaunchAnimation{
+    
+    UIImageView *launchImage = [[UIImageView  alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"52," ofType:@"jpg"];
+    launchImage.image = [[UIImage alloc] initWithContentsOfFile:path];
+    [self.window addSubview:launchImage];
+    [self.window bringSubviewToFront:launchImage];
+    
+    [UIView  animateWithDuration:3.0 animations:^{
+        launchImage.alpha = 0.5;
+    } completion:^(BOOL finished) {
+        [launchImage removeFromSuperview];
+    }];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

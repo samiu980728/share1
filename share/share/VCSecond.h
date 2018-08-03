@@ -20,6 +20,8 @@
     NSArray * array4;
     
     NSArray * array5;
+    
+    NSArray * array6;
 }
 
 @end

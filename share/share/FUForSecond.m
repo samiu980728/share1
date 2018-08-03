@@ -145,13 +145,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     NSString * filePath1 = [[NSBundle mainBundle]pathForResource:@"177" ofType:@"png"];
-    
+
     NSData * data1 = [NSData dataWithContentsOfFile:filePath1];
     
     //暂时把action设置为nil 等会还要上传照片
-    UIBarButtonItem * item1 = [[UIBarButtonItem alloc] initWithImage:[self reSizeImage:[UIImage imageWithData:data1] toSize:CGSizeMake(30, 30)] style:UIBarButtonItemStyleDone target:self action:@selector(clickMe:)];
-    
+    UIBarButtonItem * item1 = [[UIBarButtonItem alloc] initWithImage:[self reSizeImage:[UIImage imageWithData:data1] toSize:CGSizeMake(30, 30)] style:UIBarButtonItemStyleDone target:self action:@selector(clickMe11:)];
+    //UIBarButtonItem * item1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(clickMe:)];
+
     self.navigationItem.leftBarButtonItem = item1;
+    
     
     NSString * filePath2 = [[NSBundle mainBundle]pathForResource:@"166" ofType:@"png"];
     
@@ -181,6 +183,11 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+
+- (void)clickMe11:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)clickMe:(id)sender{
     VCFirst * vcFirst = [[VCFirst alloc] init];

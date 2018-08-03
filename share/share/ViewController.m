@@ -13,6 +13,8 @@
 #import "VCThird.h"
 #import "VCFourth.h"
 #import "VCFiveth.h"
+#import "RegisterViewController.h"
+
 @interface ViewController ()
 
 @end
@@ -26,14 +28,14 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"2.png"]];
     
     UIImageView * image = [[UIImageView alloc] init];
-    image.image = [UIImage imageNamed:@"1.png"];
-    image.frame = CGRectMake(88, 100, 192, 200);
+    image.image = [UIImage imageNamed:@"53,.png"];
+    image.frame = CGRectMake(100, 100, 200, 200);
     //image.backgroundColor = [UIColor blueColor];
     [self.view addSubview:image];
     
     //用户名提示标签创建
     _lbUserName = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"3.png"]];
-    _lbUserName.frame = CGRectMake(80, 320, 40, 40);
+    _lbUserName.frame = CGRectMake(90, 320, 40, 40);
     _lbUserName.backgroundColor = [UIColor whiteColor];
     
 //    _lbUserName.text = @"用户名";
@@ -42,7 +44,7 @@
 //
     //用户密码提示创建
     _lbPassWord = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"4.png"]];
-    _lbPassWord.frame = CGRectMake(80, 360, 40, 40);
+    _lbPassWord.frame = CGRectMake(90, 360, 40, 40);
     _lbPassWord.backgroundColor = [UIColor whiteColor];
 //    _lbPassWord.text = @"密码:";
 //    _lbPassWord.font = [UIFont systemFontOfSize:20];
@@ -53,13 +55,13 @@
     _tfUserName = [[UITextField alloc]init];
     
     _tfUserName.backgroundColor = [UIColor whiteColor];
-    _tfUserName.frame = CGRectMake(120, 320, 180, 40);
+    _tfUserName.frame = CGRectMake(130, 320, 180, 40);
     _tfUserName.placeholder = @"请输入用户名";
     _tfUserName.borderStyle = UITextBorderStyleLine;
     
     //密码输入框
     _tfPassWord = [[UITextField alloc]init];
-    _tfPassWord.frame = CGRectMake(120, 360, 180, 40);
+    _tfPassWord.frame = CGRectMake(130, 360, 180, 40);
     _tfPassWord.placeholder = @"请输入密码";
     _tfPassWord.borderStyle = UITextBorderStyleLine;
     _tfPassWord.backgroundColor = [UIColor whiteColor];
@@ -69,7 +71,7 @@
     
     //登录和注册按钮btn的创建
     _btLogin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _btLogin.frame = CGRectMake(120, 420, 80, 40);
+    _btLogin.frame = CGRectMake(100, 420, 80, 40);
     [_btLogin setTitle:@"登录" forState:UIControlStateNormal];
     _btLogin.titleLabel.font = [UIFont systemFontOfSize:20];
     _btLogin.tintColor = [UIColor whiteColor];
@@ -89,6 +91,9 @@
     [_btRegister setTitle:@"注册" forState:UIControlStateNormal];
     _btRegister.titleLabel.font = [UIFont systemFontOfSize:20];
     _btRegister.tintColor = [UIColor whiteColor];
+    
+    [_btRegister addTarget:self action:@selector(clickMe11:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     //设置边框
     [_btRegister.layer setMasksToBounds:YES];
@@ -117,34 +122,75 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     
-//    //设置根视图
-//    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-//
-//    [self.window makeKeyAndVisible];
-//
-//    VCFirst * vcFirst = [[VCFirst alloc] init];
-//    vcFirst.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"第一" image:nil tag:101];
-//
-//    VCSecond * vcSecond = [[VCSecond alloc] init];
-//    vcSecond.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"第二" image:nil tag:102];
-//
-//    UITabBarController * tabController = [[UITabBarController alloc] init];
-//
-//    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vcFirst];
-//
-//    UINavigationController * nav1 = [[UINavigationController alloc] initWithRootViewController:vcSecond];
-//
-//    NSArray * arrayVC = [NSArray arrayWithObjects:nav,nav1, nil];
-//
-//    tabController.viewControllers = arrayVC;
-////
-////    self.window.rootViewController = tabController;
-//
-//    AppDelegate * appDelagete = [UIApplication sharedApplication].delegate;
-//
-//    appDelagete.window.rootViewController = tabController;
+    
+    //设置监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
     
+}
+
+
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    self.navigationController.navigationBar.translucent = NO;
+//
+//    self.navigationItem.title = @" 1213 ";
+//    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageNamed:@"2.png"] forBarMetrics:nil];
+//
+//    //self.view.backgroundColor = [UIColor whiteColor];
+//
+//    NSString * filePath1 = [[NSBundle mainBundle]pathForResource:@"177" ofType:@"png"];
+//
+//    NSData * data1 = [NSData dataWithContentsOfFile:filePath1];
+//
+//    //暂时把action设置为nil 等会还要上传照片
+//    UIBarButtonItem * item1 = [[UIBarButtonItem alloc] initWithImage:[self reSizeImage:[UIImage imageWithData:data1] toSize:CGSizeMake(30, 30)] style:UIBarButtonItemStyleDone target:self action:@selector(clickMe11:)];
+//    //UIBarButtonItem * item1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(clickMe:)];
+//
+//    self.navigationItem.leftBarButtonItem = item1;
+//
+//}
+
+
+- (void)clickMe11:(id)sender
+{
+    RegisterViewController * a = [[RegisterViewController alloc] init];
+    [self presentViewController:a animated:YES completion:nil];
+}
+
+
+- (UIImage *)reSizeImage:(UIImage *)image toSize:(CGSize)reSize
+{
+    UIGraphicsBeginImageContext(CGSizeMake(reSize.width, reSize.height));
+    [image drawInRect:CGRectMake(0, 0, reSize.width, reSize.height)];
+    UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return [reSizeImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+}
+
+//键盘上移
+
+- (void)keyboardWillChange:(NSNotification *)note
+{
+    NSDictionary *userInfo = note.userInfo;
+    CGFloat duration = [userInfo[@"UIKeyboardAnimationDurationUserInfoKey"] doubleValue];
+    
+    CGRect keyFrame = [userInfo[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    CGFloat moveY = keyFrame.origin.y - self.view.frame.size.height;//这个64是我减去的navigationbar加上状态栏20的高度,可以看自己的实际情况决定是否减去;
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.view.transform = CGAffineTransformMakeTranslation(0, moveY);
+    }];
+}
+
+//以上为键盘上移
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 - (void)clickMe:(id)sender{
@@ -238,14 +284,14 @@
     
 }
 
-//点击任意地方 收回键盘
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    //回收键盘
-    [_tfUserName resignFirstResponder];
-    [_tfPassWord resignFirstResponder];
-    
-}
+////点击任意地方 收回键盘
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//{
+//    //回收键盘
+//    [_tfUserName resignFirstResponder];
+//    [_tfPassWord resignFirstResponder];
+//
+//}
 
 
 

@@ -132,20 +132,20 @@
         cell1.image.image = [UIImage imageNamed:@"36,.png"];
         
         [btn1 setTitle:@" 22" forState:UIControlStateNormal];
-        [btn1 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [btn1 setTitleColor:[UIColor colorWithRed:0.00f green:0.56f blue:0.81f alpha:1.00f] forState:UIControlStateNormal];
         [btn1 setImage:[UIImage imageNamed:@"26,.png"] forState:UIControlStateNormal];
         [btn1 addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [btn1 setTitle:@" 23" forState:UIControlStateSelected];
         
         [btn2 setTitle:@" 33" forState:UIControlStateNormal];
         [btn2 setImage:[UIImage imageNamed:@"27,.png"] forState:UIControlStateNormal];
-        [btn2 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [btn2 setTitleColor:[UIColor colorWithRed:0.00f green:0.56f blue:0.81f alpha:1.00f] forState:UIControlStateNormal];
         [btn2 addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [btn2 setTitle:@" 34" forState:UIControlStateSelected];
         
         [btn3 setTitle:@" 44" forState:UIControlStateNormal];
         [btn3 setImage:[UIImage imageNamed:@"28,.png"] forState:UIControlStateNormal];
-        [btn3 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [btn3 setTitleColor:[UIColor colorWithRed:0.00f green:0.56f blue:0.81f alpha:1.00f] forState:UIControlStateNormal];
         [btn3 addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [btn3 setTitle:@" 45" forState:UIControlStateSelected];
         

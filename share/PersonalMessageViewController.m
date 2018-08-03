@@ -8,7 +8,9 @@
 
 #import "PersonalMessageViewController.h"
 #import "MyMsgViewController.h"
-
+#import "OneMessageViewController.h"
+#import "TwoMessageViewController.h"
+#import "ThreeMessageViewController.h"
 @interface PersonalMessageViewController ()
 
 @end
@@ -87,6 +89,46 @@
     
     
     return cell1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OneMessageViewController * a = [OneMessageViewController new];
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(click:)];
+    
+    a.navigationItem.backBarButtonItem = item;
+    a.navigationItem.leftBarButtonItem = item;
+    a.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
+    if ( indexPath.section == 0 && indexPath.row == 0 ){
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:a animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+    }
+    
+    TwoMessageViewController * b = [TwoMessageViewController new];
+    b.navigationItem.backBarButtonItem = item;
+    b.navigationItem.leftBarButtonItem = item;
+    b.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
+    if ( indexPath.section == 0 && indexPath.row == 1 ){
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:b animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+    }
+    
+    ThreeMessageViewController * c = [ThreeMessageViewController new];
+    c.navigationItem.backBarButtonItem = item;
+    c.navigationItem.leftBarButtonItem = item;
+    c.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
+    if ( indexPath.section == 0 && indexPath.row == 2 ){
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:c animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+    }
+}
+
+- (void)click:(UINavigationController *)a
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

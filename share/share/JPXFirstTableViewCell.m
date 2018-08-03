@@ -76,11 +76,11 @@
     
     _image.frame = CGRectMake(0, 0, 150, 120);
     
-    [_btn1 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [_btn1 setTitleColor:[UIColor colorWithRed:0.00f green:0.56f blue:0.81f alpha:1.00f] forState:UIControlStateNormal];
     
-    [_btn2 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [_btn2 setTitleColor:[UIColor colorWithRed:0.00f green:0.56f blue:0.81f alpha:1.00f] forState:UIControlStateNormal];
     
-    [_btn3 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [_btn3 setTitleColor:[UIColor colorWithRed:0.00f green:0.56f blue:0.81f alpha:1.00f] forState:UIControlStateNormal];
     
     
     _mainString.font = [UIFont systemFontOfSize:15];

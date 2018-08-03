@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong)  UIButton * button5;
 
+@property (nonatomic, strong) UIImageView * imageView1;
 
+@property (nonatomic, strong) UIImageView * imageLine;
 
 @end

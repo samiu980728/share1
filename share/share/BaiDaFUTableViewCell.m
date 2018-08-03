@@ -1,14 +1,15 @@
 //
-//  JPXForThirdTableViewCell.m
+//  BaiDaFUTableViewCell.m
 //  share
 //
-//  Created by 萨缪 on 2018/7/30.
+//  Created by 萨缪 on 2018/8/2.
 //  Copyright © 2018年 萨缪. All rights reserved.
 //
 
-#import "JPXForThirdTableViewCell.h"
+#import "BaiDaFUTableViewCell.h"
 
-@implementation JPXForThirdTableViewCell
+@implementation BaiDaFUTableViewCell
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -30,12 +31,6 @@
         _btn2 = [[UIButton alloc] init];
         
         _btn3 = [[UIButton alloc] init];
-        
-        _upBtn1 = [[UIButton alloc] init];
-        
-        _upBtn2 = [[UIButton alloc] init];
-        
-        _upBtn3 = [[UIButton alloc] init];
         
         //_btnSet = [[UIButton alloc] init];
         
@@ -64,29 +59,20 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    _mainString.font = [UIFont systemFontOfSize:20];
     
-    _detailString1.font = [UIFont systemFontOfSize:12];
+    _mainString.frame = CGRectMake(155, 0, 200, 25);
     
-    _detailString2.font = [UIFont systemFontOfSize:12];
+    _detailString1.frame = CGRectMake(155, 40, 150, 20);
     
-    _detailString3.font = [UIFont systemFontOfSize:12];
+    _detailString2.frame = CGRectMake(155, 60, 250, 20);
     
-    //_btnSet.titleLabel.font = [UIFont systemFontOfSize:14];
+    _detailString3.frame = CGRectMake(300, 0, 100, 20);
     
-    _mainString.frame = CGRectMake(160, 0, 200, 30);
+    _btn1.frame = CGRectMake(150, 100, 70, 20);
     
-    _detailString1.frame = CGRectMake(160, 40, 250, 20);
+    _btn2.frame = CGRectMake(230, 100, 70, 20);
     
-    _detailString2.frame = CGRectMake(160, 60, 250, 20);
-    
-    _detailString3.frame = CGRectMake(160, 80, 250, 20);
-    
-    _btn1.frame = CGRectMake(160, 100, 70, 20);
-    
-    _btn2.frame = CGRectMake(240, 100, 70, 20);
-    
-    _btn3.frame = CGRectMake(320, 100, 70, 20);
+    _btn3.frame = CGRectMake(310, 100, 70, 20);
     
     _image.frame = CGRectMake(0, 0, 150, 120);
     
@@ -96,7 +82,23 @@
     
     [_btn3 setTitleColor:[UIColor colorWithRed:0.00f green:0.56f blue:0.81f alpha:1.00f] forState:UIControlStateNormal];
     
+    
+    _mainString.font = [UIFont systemFontOfSize:15];
+    
+    _detailString1.font = [UIFont systemFontOfSize:12];
+    
+    _detailString2.font = [UIFont systemFontOfSize:12];
+    
+    _detailString3.font = [UIFont systemFontOfSize:12];
+    
+    
+    _btnSet.frame = CGRectMake(300, 0, 100, 20);
+    
+    [_btnSet setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
+
+
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];
